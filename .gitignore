@@ -15,3 +15,9 @@ CLaS-Bench/identification/**/culturax_*.pt
 # OS files
 .DS_Store
 
+# Generated run outputs & plots
+generation/
+*.pdf
+**/heatmap_activation_success.png
+
+

@@ -1,0 +1,152 @@
+{
+  "summary": {
+    "overall_success_rate": 98.88888888888889,
+    "total_tests": 90,
+    "total_language_pairs": 9,
+    "max_questions_per_pair": 10
+  },
+  "per_target_language": {
+    "de": {
+      "success_rate": 100.0,
+      "successes": 30,
+      "total_tests": 30,
+      "source_languages_count": 3
+    },
+    "en": {
+      "success_rate": 96.66666666666667,
+      "successes": 29,
+      "total_tests": 30,
+      "source_languages_count": 3
+    },
+    "es": {
+      "success_rate": 100.0,
+      "successes": 30,
+      "total_tests": 30,
+      "source_languages_count": 3
+    }
+  },
+  "per_source_language": {
+    "de": {
+      "success_rate": 96.66666666666667,
+      "successes": 29,
+      "total_tests": 30,
+      "target_languages_count": 3
+    },
+    "en": {
+      "success_rate": 100.0,
+      "successes": 30,
+      "total_tests": 30,
+      "target_languages_count": 3
+    },
+    "es": {
+      "success_rate": 100.0,
+      "successes": 30,
+      "total_tests": 30,
+      "target_languages_count": 3
+    }
+  },
+  "language_pairs": {
+    "de_to_de": {
+      "success_rate": 100.0,
+      "successes": 10,
+      "total": 10
+    },
+    "de_to_en": {
+      "success_rate": 90.0,
+      "successes": 9,
+      "total": 10
+    },
+    "de_to_es": {
+      "success_rate": 100.0,
+      "successes": 10,
+      "total": 10
+    },
+    "en_to_de": {
+      "success_rate": 100.0,
+      "successes": 10,
+      "total": 10
+    },
+    "en_to_en": {
+      "success_rate": 100.0,
+      "successes": 10,
+      "total": 10
+    },
+    "en_to_es": {
+      "success_rate": 100.0,
+      "successes": 10,
+      "total": 10
+    },
+    "es_to_de": {
+      "success_rate": 100.0,
+      "successes": 10,
+      "total": 10
+    },
+    "es_to_en": {
+      "success_rate": 100.0,
+      "successes": 10,
+      "total": 10
+    },
+    "es_to_es": {
+      "success_rate": 100.0,
+      "successes": 10,
+      "total": 10
+    }
+  },
+  "question_wise": {
+    "Q1": {
+      "successes": 9,
+      "total": 9,
+      "success_rate": 100.0
+    },
+    "Q2": {
+      "successes": 9,
+      "total": 9,
+      "success_rate": 100.0
+    },
+    "Q3": {
+      "successes": 9,
+      "total": 9,
+      "success_rate": 100.0
+    },
+    "Q4": {
+      "successes": 9,
+      "total": 9,
+      "success_rate": 100.0
+    },
+    "Q5": {
+      "successes": 8,
+      "total": 9,
+      "success_rate": 88.88888888888889
+    },
+    "Q6": {
+      "successes": 9,
+      "total": 9,
+      "success_rate": 100.0
+    },
+    "Q7": {
+      "successes": 9,
+      "total": 9,
+      "success_rate": 100.0
+    },
+    "Q8": {
+      "successes": 9,
+      "total": 9,
+      "success_rate": 100.0
+    },
+    "Q9": {
+      "successes": 9,
+      "total": 9,
+      "success_rate": 100.0
+    },
+    "Q10": {
+      "successes": 9,
+      "total": 9,
+      "success_rate": 100.0
+    }
+  },
+  "detected_language_distribution": {
+    "de": 31,
+    "es": 30,
+    "en": 29
+  }
+}
