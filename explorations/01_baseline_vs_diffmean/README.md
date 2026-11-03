@@ -18,12 +18,23 @@ The goal is to force a language model to answer in a **Target Language** when gi
 
 ### DiffMean (Difference-in-Means Representation Steering)
 - **Mechanism**: Does **not** modify the prompt text (the model receives only the raw, unprompted source question). Instead, it shifts the internal residual stream representations during forward passes at inference time.
-- **Activation Centroids**: Uses precomputed language activation centroids $\boldsymbol{\mu}_l(L)$ across layers:
-  $$\boldsymbol{\mu}_l(L) = \frac{1}{N} \sum_{i=1}^{N} \mathbf{h}_l^{(i)}$$
+- **Activation Centroids**: Uses precomputed language activation centroids $\mu_l(L)$ across layers:
+
+  $$
+  \mu_l(L) = \frac{1}{N} \sum_{i=1}^{N} h_l^{(i)}
+  $$
+
 - **Steering Vector**: Computes the directional vector from source to target language:
-  $$\mathbf{v}_{\text{diff}} = \boldsymbol{\mu}_l(L_{\text{target}}) - \boldsymbol{\mu}_l(L_{\text{source}})$$
+
+  $$
+  v_{\text{diff}} = \mu_l(L_{\text{target}}) - \mu_l(L_{\text{source}})
+  $$
+
 - **Forward Hook Intervention**: Adds the normalized direction scaled by steering strength $\alpha$ directly into the residual stream:
-  $$\mathbf{h}_l' = \mathbf{h}_l + \alpha \cdot \frac{\mathbf{v}_{\text{diff}}}{\|\mathbf{v}_{\text{diff}}\|_2}$$
+
+  $$
+  h_l' = h_l + \alpha \cdot \frac{v_{\text{diff}}}{\|v_{\text{diff}}\|_2}
+  $$
 
 ---
 
@@ -31,7 +42,10 @@ The goal is to force a language model to answer in a **Target Language** when gi
 
 Outputs are evaluated using Meta's NLLB FastText Language Identification model (`lid218e.bin`):
 
-$$\text{Success} = \begin{cases} 1 & \text{if } \text{FastText}(\text{output}) == L_{\text{target}} \\ 0 & \text{otherwise} \end{cases}$$
+- **Success (1)**: If `FastText(output) == Target Language`
+- **Failure (0)**: Otherwise
+
+$$\text{Success Rate} = \frac{\text{Number of Successful Forcings}}{\text{Total Tested Questions}} \times 100\%$$
 
 ---
 
@@ -39,7 +53,7 @@ $$\text{Success} = \begin{cases} 1 & \text{if } \text{FastText}(\text{output}) =
 
 Evaluated on 9 language pairs ($3 \times 3$) with 10 questions per pair (90 generations total per approach):
 
-| Metric | Baseline 1 (Prompting) | DiffMean (Layer 4, $\alpha=10.0$) |
+| Metric | Baseline 1 (Prompting) | DiffMean (Layer 4, α = 10.0) |
 |:---|:---:|:---:|
 | **Overall Success Rate** | **98.9%** (89 / 90) | **100.0%** (90 / 90) |
 | **Prompt Modified?** | Yes (`"Respond in X."`) | **No (Raw question only)** |
