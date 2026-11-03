@@ -1,0 +1,17 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pre-tokenized CulturaX data & FastText language ID binary
+CLaS-Bench/identification/**/culturax_*.pt
+**/lid218e.bin
+
+# OS files
+.DS_Store
+

@@ -181,12 +181,13 @@ def main():
                                "source_language_instruction", "target_language_instruction", "all"])
     parser.add_argument("--max_model_len", type=int, default=4096)
     parser.add_argument("--gpu_memory_utilization", type=float, default=0.95)
+    parser.add_argument("--quantization", type=str, default=None, help="Optional vLLM quantization (e.g. bitsandbytes for 16GB T4 GPU)")
     
     global args
     args = parser.parse_args()
     
     print(f"Loading model: {args.model}")
-    model = LLM(
+    llm_kwargs = dict(
         model=args.model, 
         tensor_parallel_size=torch.cuda.device_count(),
         max_model_len=args.max_model_len,
@@ -196,6 +197,10 @@ def main():
         dtype="bfloat16",
         enable_prefix_caching=False,
     )
+    if args.quantization:
+        llm_kwargs["quantization"] = args.quantization
+        llm_kwargs["load_format"] = args.quantization
+    model = LLM(**llm_kwargs)
     
     # Get model-specific stop tokens
     tokenizer = model.get_tokenizer()

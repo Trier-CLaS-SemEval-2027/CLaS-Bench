@@ -243,6 +243,7 @@ def main():
                        help="Last layer to apply steering (default: all layers)")
     parser.add_argument("--max_model_len", type=int, default=4096)
     parser.add_argument("--gpu_memory_utilization", type=float, default=0.95)
+    parser.add_argument("--quantization", type=str, default=None, help="Optional vLLM quantization (e.g. bitsandbytes for 16GB T4 GPU)")
     parser.add_argument("--skip_existing", action='store_true', 
                        help="Skip experiments that already have results")
 
@@ -263,7 +264,7 @@ def main():
     test_questions = get_test_questions(k=70)
     
     # Initialize model
-    model = LLM(
+    llm_kwargs = dict(
         model=args.model,
         tensor_parallel_size=torch.cuda.device_count(),
         max_model_len=args.max_model_len,
@@ -273,6 +274,10 @@ def main():
         dtype="bfloat16",
         enable_prefix_caching=False,
     )
+    if args.quantization:
+        llm_kwargs["quantization"] = args.quantization
+        llm_kwargs["load_format"] = args.quantization
+    model = LLM(**llm_kwargs)
     
     # Get model-specific stop tokens
     tokenizer = model.get_tokenizer()

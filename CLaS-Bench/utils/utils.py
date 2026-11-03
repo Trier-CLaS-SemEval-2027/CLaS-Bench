@@ -2,45 +2,43 @@ import os
 
 def get_test_questions(data_dir="data", k=70):
     """
-    Load test questions from language-specific data files.
-    
-    Args:
-        data_dir: Path to the data directory containing language files
-        k: Number of examples to load per language (default: 70)
-    
-    Returns:
-        Dictionary mapping language codes to lists of questions
-        Example: {"en": [question1, question2, ...], "de": [...], ...}
+    Load test questions from language-specific data files, or directly from
+    the Hugging Face 'DGurgurov/CLaS-Bench' dataset if local files are missing.
     """
     test_questions = {}
-    
-    # Get all .txt files in data directory
-    if not os.path.exists(data_dir):
-        raise FileNotFoundError(f"Data directory not found: {data_dir}")
-    
-    for filename in os.listdir(data_dir):
-        if filename.endswith(".txt"):
-            lang_code = filename.replace(".txt", "")
-            filepath = os.path.join(data_dir, filename)
-            
-            try:
-                with open(filepath, "r", encoding="utf-8") as f:
-                    lines = f.readlines()
-                
-                # Strip whitespace and filter out empty lines
-                questions = [line.strip() for line in lines if line.strip()]
-                
-                # Take only k examples
-                questions = questions[:k]
-                
-                test_questions[lang_code] = questions
-                print(f"Loaded {len(questions)} questions for {lang_code}")
-            
-            except Exception as e:
-                print(f"Error loading {filename}: {e}")
-    
+
+    if os.path.exists(data_dir):
+        for filename in os.listdir(data_dir):
+            if filename.endswith(".txt"):
+                lang_code = filename.replace(".txt", "")
+                filepath = os.path.join(data_dir, filename)
+                try:
+                    with open(filepath, "r", encoding="utf-8") as f:
+                        lines = f.readlines()
+                    questions = [line.strip() for line in lines if line.strip()][:k]
+                    test_questions[lang_code] = questions
+                    print(f"Loaded {len(questions)} questions for {lang_code}")
+                except Exception as e:
+                    print(f"Error loading {filename}: {e}")
+
     if not test_questions:
-        raise ValueError(f"No language files found in {data_dir}")
-    
+        print(f"Local '{data_dir}/' not found; loading 'DGurgurov/CLaS-Bench' from Hugging Face...")
+        from datasets import load_dataset
+        from collections import defaultdict
+
+        ds = load_dataset("DGurgurov/CLaS-Bench", split="train")
+        grouped = defaultdict(list)
+        for row in ds:
+            lang_code = row["language_code"]
+            # Map 'cz' in HF dataset to 'cs' used in steering vector filenames
+            if lang_code == "cz":
+                lang_code = "cs"
+            if len(grouped[lang_code]) < k:
+                grouped[lang_code].append(row["question"].strip())
+
+        test_questions = dict(grouped)
+        for lang_code, questions in sorted(test_questions.items()):
+            print(f"Loaded {len(questions)} questions for {lang_code} (from HF)")
+
     print(f"\nSuccessfully loaded {len(test_questions)} languages")
     return test_questions
