@@ -10,6 +10,7 @@ STEERING_DIR="identification/data_aya"
 LANGUAGES="en de es"
 
 export VLLM_USE_V1=0
+export VLLM_ENABLE_V1_MULTIPROCESSING=0
 # export VLLM_FLASH_ATTN_VERSION=2 # for gemma-2
 
 # Steering parameters - Layer 4 with strength 10.0 is the optimal DiffMean config for Aya-Expanse-8B
@@ -34,6 +35,7 @@ for LAYER_START in 4; do
             --steering_strength $STEERING_STRENGTH \
             --max_model_len 2048 \
             --quantization bitsandbytes \
+            --dtype "float16" \
             --skip_existing
     done
 done
