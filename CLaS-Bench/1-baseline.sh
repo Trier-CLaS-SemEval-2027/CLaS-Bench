@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pip install "vllm==0.10.1" bitsandbytes datasets
+pip install "vllm==0.10.2" bitsandbytes datasets
 
 SCRIPT="1-prompt_generate.py"
 MODEL="CohereLabs/aya-expanse-8b" # meta-llama/Llama-3.1-8B-Instruct || CohereLabs/aya-expanse-8b
