@@ -24,6 +24,7 @@ python $SCRIPT --batch_mode \
     --languages $LANGUAGES \
     --instruction_mode "language_instruction" \
     --max_model_len 2048 \
-    --quantization bitsandbytes
+    --quantization bitsandbytes \
+    --dtype "float16"
 
 

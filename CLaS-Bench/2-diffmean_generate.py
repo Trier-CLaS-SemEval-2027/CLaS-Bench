@@ -244,8 +244,8 @@ def main():
     parser.add_argument("--max_model_len", type=int, default=4096)
     parser.add_argument("--gpu_memory_utilization", type=float, default=0.95)
     parser.add_argument("--quantization", type=str, default=None, help="Optional vLLM quantization (e.g. bitsandbytes for 16GB T4 GPU)")
-    parser.add_argument("--skip_existing", action='store_true', 
-                       help="Skip experiments that already have results")
+    parser.add_argument("--dtype", type=str, default="bfloat16", help="elect the datatybe based on the model")
+    parser.add_argument("--skip_existing", action='store_true', help="Skip experiments that already have results")
 
     global args
     args = parser.parse_args()
@@ -271,9 +271,11 @@ def main():
         gpu_memory_utilization=args.gpu_memory_utilization,
         trust_remote_code=True,
         enforce_eager=True,
-        dtype="bfloat16",
+        dtype=args.dtype,
         enable_prefix_caching=False,
     )
+    if args.dtype:
+        llm_kwargs["dtype"] = args.dtype
     if args.quantization:
         llm_kwargs["quantization"] = args.quantization
         llm_kwargs["load_format"] = args.quantization

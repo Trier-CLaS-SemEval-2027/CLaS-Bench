@@ -10,6 +10,7 @@ STEERING_DIR="identification/data_aya"
 LANGUAGES="en de es"
 
 export VLLM_USE_V1=0
+export VLLM_ENABLE_V1_MULTIPROCESSING=0
 # export VLLM_FLASH_ATTN_VERSION=2 # for gemma-2
 
 # Steering parameters - test representative layers across the network (early, early-mid, late-mid, late)
@@ -34,6 +35,7 @@ for LAYER_START in 4 12 20 28; do
             --steering_strength $STEERING_STRENGTH \
             --max_model_len 2048 \
             --quantization bitsandbytes \
+            --dtype "float16" \
             --skip_existing
     done
 done
