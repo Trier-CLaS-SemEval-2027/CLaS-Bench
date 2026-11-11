@@ -6,7 +6,7 @@ SCRIPT="evaluate_forcing_success.py"
 MODEL="CohereLabs/aya-expanse-8b"
 MODEL_NAME=${MODEL#*/}
 
-for LAYER_START in 4; do
+for LAYER_START in 4 12 20 28; do
     LAYER_END=$((LAYER_START + 1))
     
     for STEERING_STRENGTH in 10.0; do

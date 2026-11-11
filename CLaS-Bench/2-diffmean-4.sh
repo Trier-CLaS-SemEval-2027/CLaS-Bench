@@ -12,8 +12,8 @@ LANGUAGES="en de es"
 export VLLM_USE_V1=0
 # export VLLM_FLASH_ATTN_VERSION=2 # for gemma-2
 
-# Steering parameters - Layer 4 with strength 10.0 is the optimal DiffMean config for Aya-Expanse-8B
-for LAYER_START in 4; do
+# Steering parameters - test representative layers across the network (early, early-mid, late-mid, late)
+for LAYER_START in 4 12 20 28; do
     LAYER_END=$((LAYER_START + 1))
     
     for STEERING_STRENGTH in 10.0; do
