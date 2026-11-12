@@ -245,6 +245,7 @@ def main():
     parser.add_argument("--gpu_memory_utilization", type=float, default=0.95)
     parser.add_argument("--quantization", type=str, default=None, help="Optional vLLM quantization (e.g. bitsandbytes for 16GB T4 GPU)")
     parser.add_argument("--dtype", type=str, default="bfloat16", help="elect the datatybe based on the model")
+    parser.add_argument("--max_tokens", type=int, default=int(os.environ.get("CLAS_BENCH_MAX_TOKENS", 1024)), help="Maximum new tokens to generate (default: 1024)")
     parser.add_argument("--skip_existing", action='store_true', help="Skip experiments that already have results")
 
     global args
@@ -291,7 +292,7 @@ def main():
     
     sampling_params = SamplingParams(
         temperature=0.0,
-        max_tokens=1024,
+        max_tokens=args.max_tokens,
         repetition_penalty=1.0,
         stop_token_ids=stop_token_ids if stop_token_ids else None,
         skip_special_tokens=True

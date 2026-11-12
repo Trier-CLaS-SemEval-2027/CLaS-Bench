@@ -11,7 +11,8 @@ LANGUAGES="en de cs mt bo"
 
 export VLLM_USE_V1=0
 # export VLLM_FLASH_ATTN_VERSION=2 # for gemma-2
-export CLAS_BENCH_K=20 # Number of test questions per language (default: 70)
+export CLAS_BENCH_K=15 # Number of test questions per language (default: 70)
+export CLAS_BENCH_MAX_TOKENS=300 # Limit output length to prevent runaway generation
 
 # Steering parameters - test representative layers across the network (early, early-mid, late-mid, late)
 for LAYER_START in 4 12 20 28; do
@@ -33,6 +34,7 @@ for LAYER_START in 4 12 20 28; do
             --layer_start $LAYER_START \
             --layer_end $LAYER_END \
             --steering_strength $STEERING_STRENGTH \
+            --max_tokens $CLAS_BENCH_MAX_TOKENS \
             --max_model_len 2048 \
             --quantization bitsandbytes \
             --dtype "float16" \
