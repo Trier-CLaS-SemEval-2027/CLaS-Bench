@@ -4,7 +4,9 @@ def get_test_questions(data_dir="data", k=70):
     """
     Load test questions from language-specific data files, or directly from
     the Hugging Face 'DGurgurov/CLaS-Bench' dataset if local files are missing.
+    Can be overridden via CLAS_BENCH_K environment variable.
     """
+    k = int(os.environ.get("CLAS_BENCH_K", k))
     test_questions = {}
 
     if os.path.exists(data_dir):
