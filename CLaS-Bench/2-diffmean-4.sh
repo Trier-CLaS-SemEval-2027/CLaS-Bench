@@ -7,11 +7,11 @@ MODEL="CohereLabs/aya-expanse-8b" # meta-llama/Llama-3.1-8B-Instruct || CohereLa
 
 MODEL_NAME=${MODEL#*/}
 STEERING_DIR="identification/data_aya" 
-LANGUAGES="en de es"
+LANGUAGES="en de cs mt bo"
 
 export VLLM_USE_V1=0
 # export VLLM_FLASH_ATTN_VERSION=2 # for gemma-2
-export CLAS_BENCH_K=30 # Number of test questions per language (default: 70)
+export CLAS_BENCH_K=20 # Number of test questions per language (default: 70)
 
 # Steering parameters - test representative layers across the network (early, early-mid, late-mid, late)
 for LAYER_START in 4 12 20 28; do
