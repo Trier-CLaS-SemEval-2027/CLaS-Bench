@@ -1,0 +1,485 @@
+{
+  "experiment": "DiffMean Multi-Layer Language Forcing (5-Language Spectrum)",
+  "model": "CohereLabs/aya-expanse-8b (4-bit NF4 via bitsandbytes)",
+  "steering_strength_alpha": 10.0,
+  "languages": {
+    "en": {
+      "name": "English",
+      "tier": "High-resource",
+      "script": "Latin"
+    },
+    "de": {
+      "name": "German",
+      "tier": "High-resource",
+      "script": "Latin"
+    },
+    "cs": {
+      "name": "Czech",
+      "tier": "Mid-resource",
+      "script": "Latin"
+    },
+    "mt": {
+      "name": "Maltese",
+      "tier": "Low-resource",
+      "script": "Latin"
+    },
+    "bo": {
+      "name": "Tibetan",
+      "tier": "Low-resource",
+      "script": "Tibetan (Non-Latin)"
+    }
+  },
+  "layers": {
+    "4": {
+      "total_detections": 500,
+      "num_pairs": 25,
+      "overall_success_rate": 45.6,
+      "overall_successes": 228,
+      "per_target_language": {
+        "en": {
+          "rate": 77.0,
+          "successes": 77,
+          "total": 100
+        },
+        "de": {
+          "rate": 72.0,
+          "successes": 72,
+          "total": 100
+        },
+        "cs": {
+          "rate": 69.0,
+          "successes": 69,
+          "total": 100
+        },
+        "mt": {
+          "rate": 10.0,
+          "successes": 10,
+          "total": 100
+        },
+        "bo": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 100
+        }
+      },
+      "per_source_language": {
+        "mt": {
+          "rate": 57.0,
+          "successes": 57,
+          "total": 100
+        },
+        "cs": {
+          "rate": 50.0,
+          "successes": 50,
+          "total": 100
+        },
+        "bo": {
+          "rate": 41.0,
+          "successes": 41,
+          "total": 100
+        },
+        "en": {
+          "rate": 40.0,
+          "successes": 40,
+          "total": 100
+        },
+        "de": {
+          "rate": 40.0,
+          "successes": 40,
+          "total": 100
+        }
+      },
+      "detected_distribution": {
+        "en": {
+          "count": 132,
+          "pct": 26.4
+        },
+        "de": {
+          "count": 110,
+          "pct": 22.0
+        },
+        "unknown": {
+          "count": 100,
+          "pct": 20.0
+        },
+        "cs": {
+          "count": 94,
+          "pct": 18.8
+        },
+        "hi": {
+          "count": 18,
+          "pct": 3.6
+        },
+        "mt": {
+          "count": 11,
+          "pct": 2.2
+        },
+        "zh": {
+          "count": 10,
+          "pct": 2.0
+        },
+        "nl": {
+          "count": 6,
+          "pct": 1.2
+        },
+        "pl": {
+          "count": 4,
+          "pct": 0.8
+        },
+        "it": {
+          "count": 3,
+          "pct": 0.6
+        },
+        "dzo_Tibt": {
+          "count": 3,
+          "pct": 0.6
+        }
+      }
+    },
+    "12": {
+      "total_detections": 405,
+      "num_pairs": 25,
+      "overall_success_rate": 34.8,
+      "overall_successes": 141,
+      "per_target_language": {
+        "en": {
+          "rate": 76.5,
+          "successes": 65,
+          "total": 85
+        },
+        "de": {
+          "rate": 37.5,
+          "successes": 30,
+          "total": 80
+        },
+        "cs": {
+          "rate": 57.5,
+          "successes": 46,
+          "total": 80
+        },
+        "mt": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 80
+        },
+        "bo": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 80
+        }
+      },
+      "per_source_language": {
+        "mt": {
+          "rate": 54.7,
+          "successes": 41,
+          "total": 75
+        },
+        "de": {
+          "rate": 43.8,
+          "successes": 35,
+          "total": 80
+        },
+        "cs": {
+          "rate": 40.0,
+          "successes": 30,
+          "total": 75
+        },
+        "en": {
+          "rate": 20.0,
+          "successes": 20,
+          "total": 100
+        },
+        "bo": {
+          "rate": 20.0,
+          "successes": 15,
+          "total": 75
+        }
+      },
+      "detected_distribution": {
+        "en": {
+          "count": 162,
+          "pct": 40.0
+        },
+        "unknown": {
+          "count": 80,
+          "pct": 19.8
+        },
+        "cs": {
+          "count": 74,
+          "pct": 18.3
+        },
+        "de": {
+          "count": 59,
+          "pct": 14.6
+        },
+        "mt": {
+          "count": 8,
+          "pct": 2.0
+        },
+        "zh": {
+          "count": 7,
+          "pct": 1.7
+        },
+        "ar": {
+          "count": 5,
+          "pct": 1.2
+        },
+        "it": {
+          "count": 4,
+          "pct": 1.0
+        },
+        "hi": {
+          "count": 2,
+          "pct": 0.5
+        }
+      }
+    },
+    "20": {
+      "total_detections": 375,
+      "num_pairs": 25,
+      "overall_success_rate": 26.1,
+      "overall_successes": 98,
+      "per_target_language": {
+        "en": {
+          "rate": 48.0,
+          "successes": 36,
+          "total": 75
+        },
+        "de": {
+          "rate": 41.3,
+          "successes": 31,
+          "total": 75
+        },
+        "cs": {
+          "rate": 41.3,
+          "successes": 31,
+          "total": 75
+        },
+        "mt": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        },
+        "bo": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        }
+      },
+      "per_source_language": {
+        "en": {
+          "rate": 40.0,
+          "successes": 30,
+          "total": 75
+        },
+        "de": {
+          "rate": 40.0,
+          "successes": 30,
+          "total": 75
+        },
+        "cs": {
+          "rate": 30.7,
+          "successes": 23,
+          "total": 75
+        },
+        "bo": {
+          "rate": 17.3,
+          "successes": 13,
+          "total": 75
+        },
+        "mt": {
+          "rate": 2.7,
+          "successes": 2,
+          "total": 75
+        }
+      },
+      "detected_distribution": {
+        "en": {
+          "count": 84,
+          "pct": 22.4
+        },
+        "unknown": {
+          "count": 75,
+          "pct": 20.0
+        },
+        "cs": {
+          "count": 68,
+          "pct": 18.1
+        },
+        "de": {
+          "count": 61,
+          "pct": 16.3
+        },
+        "it": {
+          "count": 38,
+          "pct": 10.1
+        },
+        "zh": {
+          "count": 25,
+          "pct": 6.7
+        },
+        "mt": {
+          "count": 17,
+          "pct": 4.5
+        },
+        "hi": {
+          "count": 3,
+          "pct": 0.8
+        },
+        "bo": {
+          "count": 1,
+          "pct": 0.3
+        }
+      }
+    },
+    "28": {
+      "total_detections": 375,
+      "num_pairs": 25,
+      "overall_success_rate": 1.9,
+      "overall_successes": 7,
+      "per_target_language": {
+        "en": {
+          "rate": 9.3,
+          "successes": 7,
+          "total": 75
+        },
+        "de": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        },
+        "cs": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        },
+        "mt": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        },
+        "bo": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        }
+      },
+      "per_source_language": {
+        "bo": {
+          "rate": 9.3,
+          "successes": 7,
+          "total": 75
+        },
+        "en": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        },
+        "de": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        },
+        "cs": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        },
+        "mt": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 75
+        }
+      },
+      "detected_distribution": {
+        "en": {
+          "count": 77,
+          "pct": 20.5
+        },
+        "unknown": {
+          "count": 75,
+          "pct": 20.0
+        },
+        "de": {
+          "count": 60,
+          "pct": 16.0
+        },
+        "cs": {
+          "count": 60,
+          "pct": 16.0
+        },
+        "zh": {
+          "count": 38,
+          "pct": 10.1
+        },
+        "it": {
+          "count": 33,
+          "pct": 8.8
+        },
+        "mt": {
+          "count": 27,
+          "pct": 7.2
+        },
+        "hi": {
+          "count": 4,
+          "pct": 1.1
+        },
+        "bo": {
+          "count": 1,
+          "pct": 0.3
+        }
+      }
+    }
+  },
+  "non_tibetan_4lang_summary": {
+    "languages": [
+      "en",
+      "de",
+      "cs",
+      "mt"
+    ],
+    "note": "Tibetan (bo) excluded due to 0.0% target forcing across all layers.",
+    "layers": {
+      "4": {
+        "overall_4lang_rate": 58.4,
+        "high_mid_3lang_rate": 73.8,
+        "source_rates_excl_bo_target": {
+          "mt": 71.3,
+          "cs": 62.5,
+          "de": 50.0,
+          "en": 50.0
+        }
+      },
+      "12": {
+        "overall_4lang_rate": 47.5,
+        "high_mid_3lang_rate": 63.0,
+        "source_rates_excl_bo_target": {
+          "mt": 68.3,
+          "cs": 50.0,
+          "de": 54.7,
+          "en": 25.0
+        }
+      },
+      "20": {
+        "overall_4lang_rate": 35.4,
+        "high_mid_3lang_rate": 47.2,
+        "source_rates_excl_bo_target": {
+          "mt": 3.3,
+          "cs": 38.3,
+          "de": 50.0,
+          "en": 50.0
+        }
+      },
+      "28": {
+        "overall_4lang_rate": 0.0,
+        "high_mid_3lang_rate": 0.0,
+        "source_rates_excl_bo_target": {
+          "mt": 0.0,
+          "cs": 0.0,
+          "de": 0.0,
+          "en": 0.0
+        }
+      }
+    }
+  }
+}
